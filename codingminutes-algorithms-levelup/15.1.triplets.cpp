@@ -12,13 +12,11 @@ using namespace std;
 
 // start parameter cannot be zero. it will not cause problem because it's being called
 // from solveTriplet function which will always send start from 1 to N.
-vector<vector<int>> solveSortedPairSum(vector<int> &arr, int sum, int start)
+void solveSortedPairSum(vector<int> &arr, int sum, int start, vector<vector<int>> &result)
 {
     int i = start;
     int j = arr.size() - 1;
     int tempSum = 0;
-
-    vector<vector<int>> result;
 
     while (i < j)
     {
@@ -40,7 +38,6 @@ vector<vector<int>> solveSortedPairSum(vector<int> &arr, int sum, int start)
 
         i++;
     }
-    return result;
 }
 
 vector<vector<int>> solveTriplet(vector<int> &arr, int sum)
@@ -50,10 +47,7 @@ vector<vector<int>> solveTriplet(vector<int> &arr, int sum)
 
     for (int i = 0; i < arr.size(); i++)
     {
-        for (const vector<int> &pairResult : solveSortedPairSum(arr, sum - arr[i], i + 1))
-        {
-            result.emplace_back(pairResult);
-        }
+        solveSortedPairSum(arr, sum - arr[i], i + 1, result);
     }
 
     return result;
