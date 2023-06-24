@@ -1,0 +1,8 @@
+#vs-code files
+.vscode/
+
+# c++ build files
+*.exe
+*.ilk
+*.obj
+*.pdb
