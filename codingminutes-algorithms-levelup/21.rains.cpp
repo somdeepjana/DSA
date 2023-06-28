@@ -3,6 +3,8 @@ Problem Statement:
     Given n non-negative integers representing an elevation map where the width of each bar is 1, compute how much water it can trap after raining.
 
     leetcode: https://leetcode.com/problems/trapping-rain-water/
+
+    solve explanation: https://leetcode.com/problems/trapping-rain-water/solutions/3401992/100-detailed-explaination-with-pictures-in-c-java-python-two-pointers/
 */
 
 #include <iostream>
@@ -90,7 +92,7 @@ int lessSpaceSol(const vector<int> &height)
 
         // left or right whichever have low height will be included
         // in the water calculation counting the other one will only
-        // be included when any bar greater than it is fond later.
+        // be included when any bar greater than it is found later.
         if (height[l] < height[r])
         {
             result += minBar - height[l];
