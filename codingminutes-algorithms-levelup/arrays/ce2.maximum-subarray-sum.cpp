@@ -18,7 +18,7 @@ using namespace std;
 int solveMaxSubSum(const vector<int> &arr)
 {
 
-    int max_sum = numeric_limits<int>::min();
+    int max_sum = 0;
     int max_end_here = 0;
 
     for (const int &i : arr)
