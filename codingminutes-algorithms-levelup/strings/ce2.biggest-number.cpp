@@ -16,38 +16,29 @@ Problem statement:
 
 using namespace std;
 
-bool comparator(const string &first, const string &second)
+// lexicographic comparision of two same length number is always follows
+// the same behaviour as numeric comparision.
+bool comparator(const int &first, const int &second)
 {
-    const unsigned long long before = stoull(first + second);
-    const unsigned long long after = stoull(second + first);
-
-    return before > after;
+    return to_string(first) + to_string(second) > to_string(second) + to_string(first);
 }
 
 string concatenate(vector<int> numbers)
 {
     const int n = numbers.size();
-    string *str_arr = new string[numbers.size()];
 
-    for (int i = 0; i < n; i++)
-    {
-        str_arr[i] = to_string(numbers[i]);
-    }
-
-    sort(str_arr, str_arr + numbers.size(), comparator);
+    sort(numbers.begin(), numbers.end(), comparator);
 
     string result = "";
-    bool startWithZero = true;
-    for (int i = 0; i < n; i++)
+    for (const int &i : numbers)
     {
-        if (startWithZero && str_arr[i] == "0")
-            continue;
-
-        startWithZero = false;
-        result += str_arr[i];
+        result += to_string(i);
     }
 
-    if (startWithZero)
+    // only if all the element in the array is zero then only zero will be
+    // the first element in the result. so rather returning all zero just
+    // returning single zero.
+    if (result[0] == '0')
         return "0";
 
     return result;
