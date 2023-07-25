@@ -18,11 +18,35 @@ using namespace std;
 
 string breakPalindrome(string palindrome)
 {
+    int n = palindrome.size();
+    if (n <= 1)
+        return "";
+
+    for (int i = 0; i < n / 2; i++)
+    {
+        // if any element is other than 'a' from the beginning is found, then
+        // changing that to 'a' will automatically break the palindrome and
+        // will also be lexicographically smaller.
+        if (palindrome[i] != 'a')
+        {
+            palindrome[i] = 'a';
+            return palindrome;
+        }
+    }
+
+    // if answer is not found in the above loop means all the elements
+    // in the array is 'a' so changing the last element to the next big char
+    // will break the palindrome and also be the smallest.
+    palindrome[n - 1] = 'b';
+    return palindrome;
 }
 
 int main()
 {
     string testCase = "abccba";
+    // string testCase = "a";
+    // string testCase = "aa";
+    // string testCase = "aba";
 
-    cout << breakPalindrome(testCase);
+    cout << "'" << breakPalindrome(testCase) << "'";
 }
