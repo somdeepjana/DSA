@@ -87,3 +87,23 @@ void clearLastIBits(int &n, int i) {
     n = n & clearBit;
 }
 ```
+
+#### clear bit in `i` to `j`
+
+here `i` is from LSB.
+
+first create number whose last `j` bits are 0 and rest is 1 like this `(~0) << (j+1)`, `+1` because the range is inclusive so we are going to clear the j'th bit as well. 
+
+then another number whose last i'th bit is 1 and rest is 0 like this `(1<<i) - 1`, here `1 << i` put 1 at i'th position and subtracting 1 will make i'th bit 0 and all the bit's after that 1. 
+
+now `or` `|` operation between theses two will give a number whose starting from MSB before j all bit's are set to 1 and j to i all bit's are set to 0 then after i to LSB all are set to 1 again. `&` operation with this number will clear out all the bits between i an j.
+
+```c++
+void clearInRange(int &n, int i, int j) {
+    int msbSet = (~0) << (j+1);
+    int lsbSet = (1 << i) - 1;
+    int clearSet = msbSet | lsbSet;
+
+    n = n & clearSet;
+}
+```
