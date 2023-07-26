@@ -7,6 +7,22 @@ Problem statement:
 
 #include <iostream>
 
+/*
+    so for 3^5
+    we can write 5-> 0b101
+    so 3^(0b101)
+
+    if we convert 0b101 to 1x2^2 + 0x2^1 + 1x2^0
+    now we get 3^(1x2^2 + 0x2^1 + 1x2^0) = 3^(1x2^2) * 3^(0x2^1) * 3^(1x2^0)
+    so solving it we get
+    3^4 * 3^0 * 3^1
+    3^(2+2) * 1 * 3^(1)
+    so excluding 0 bit we get a series like this
+    (3*3*3*3) * (3*3) * (3)
+    so for each bit of exponent value of 3 getting double of previous one
+    so for 15 the series is like this (3^(2+2+2) * 3^(2+2) * 3^(2) * 3^(1))
+    which will be like (3*3*3*3*3*3) * (3*3*3*3) * (3*3) * 3
+*/
 int fastExponent(int numb, int exponent)
 {
     int result = 1;
@@ -37,7 +53,7 @@ using namespace std;
 int main()
 {
     int numb = 3;
-    int exponent = 4;
+    int exponent = 5;
 
     cout << fastExponent(numb, exponent);
 }
