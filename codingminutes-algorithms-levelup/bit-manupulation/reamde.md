@@ -40,11 +40,9 @@ int getIthBit(int n, int i) {
 do `or` `|` operation of the number with a number whose `i'th` bit is set and rest are 0. for creating such number see the previous topic.
 
 ```c++
-int setIthBit(int n, int i) {
+void setIthBit(int &n, int i) {
     int setBit = 1 << i;
-    int setNumb = n | setBit;
-
-    return setNumb;
+    n = n | setBit;
 }
 ```
 
@@ -55,10 +53,37 @@ do `&` operation with a number whose `i'th` bit is set to 0 and rest is 1.
 to create such number first left shift 1 to i'th times `1 << i`, then do not of this like `~ ( 1 << i)`.
 
 ```c++
-int clearIthBit(int n, int i) {
+void clearIthBit(int &n, int i) {
     int clearBit = ~(1 << i);
-    int clearNumb = n & setBit;
+    n = n & clearBit;
+}
+```
 
-    return clearNumb;
+#### update `i'th` bit with user provided value
+
+here the challenge is the same function should set the bit to 1 as well as 0. so above two function can not be applied here.
+
+to do this first clear the `i'th` bit and then do `or` `|` operation with whatever user provided value is. so if th user provided value is 1 it will set the bit again else i will stay as it is.
+
+```c++
+void clearIthBit(int &n, int i, int v) {
+    int clearBit = ~(1 << i);
+    n = n & clearBit;
+
+    int setBit = (v << i);
+    n = n | setBit;
+}
+```
+
+#### remove last `i'th` bits of a number
+
+do `&` operation of that number with a number whose last `i'th` bits are set to 0 and rest is 1.
+
+to create such a number take `~0` which is `-1` because it has all the bit's set as 1 then do left shift with `-1 << i`.
+
+```c++
+void clearLastIBits(int &n, int i) {
+    int clearBit = (~0) << i;
+    n = n & clearBit;
 }
 ```
