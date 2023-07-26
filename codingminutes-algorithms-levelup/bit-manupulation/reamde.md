@@ -47,3 +47,18 @@ int setIthBit(int n, int i) {
     return setNumb;
 }
 ```
+
+#### clear `i'th` bit
+
+do `&` operation with a number whose `i'th` bit is set to 0 and rest is 1.
+
+to create such number first left shift 1 to i'th times `1 << i`, then do not of this like `~ ( 1 << i)`.
+
+```c++
+int clearIthBit(int n, int i) {
+    int clearBit = ~(1 << i);
+    int clearNumb = n & setBit;
+
+    return clearNumb;
+}
+```
