@@ -14,7 +14,7 @@ so for example `~0`(not of 0) return `-1`, because not make all 32 bit 1 of whic
 
 `a << b` is same as `a * 2^b`. a is left shifted b number of bits. execs bit of the left will just discarded.
 
-#### Right shift >> 
+#### Right shift >>
 
 `a >> b` is same as `a / 2^b`. a is right shifted b number of bits. execs bit of the right will just get discarded.
 
@@ -92,9 +92,9 @@ void clearLastIBits(int &n, int i) {
 
 here `i` is from LSB.
 
-first create number whose last `j` bits are 0 and rest is 1 like this `(~0) << (j+1)`, `+1` because the range is inclusive so we are going to clear the j'th bit as well. 
+first create number whose last `j` bits are 0 and rest is 1 like this `(~0) << (j+1)`, `+1` because the range is inclusive so we are going to clear the j'th bit as well.
 
-then another number whose last i'th bit is 1 and rest is 0 like this `(1<<i) - 1`, here `1 << i` put 1 at i'th position and subtracting 1 will make i'th bit 0 and all the bit's after that 1. 
+then another number whose last i'th bit is 1 and rest is 0 like this `(1<<i) - 1`, here `1 << i` put 1 at i'th position and subtracting 1 will make i'th bit 0 and all the bit's after that 1.
 
 now `or` `|` operation between theses two will give a number whose starting from MSB before j all bit's are set to 1 and j to i all bit's are set to 0 then after i to LSB all are set to 1 again. `&` operation with this number will clear out all the bits between i an j.
 
