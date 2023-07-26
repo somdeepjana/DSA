@@ -107,3 +107,7 @@ void clearInRange(int &n, int i, int j) {
     n = n & clearSet;
 }
 ```
+
+### Power of two property
+
+if a number is power of two then if you subtract 1 from that number and do `&` operation of both of them then it will return 0. This can be used to check whether a number is power of 2.
